@@ -310,19 +310,4 @@ consulta debe mostrar el nombre y apellido de los actores y el número de pelíc
 han actuado juntos. Pista: Podemos hacer un JOIN de una tabla consigo misma, poniendole un 
 alias diferente. */
 
-SELECT *
-FROM actor;
-
-SELECT *
-FROM film_actor;
-
-SELECT a.first_name AS Nombre, a.last_name AS Apellido, COUNT(*) AS peliculas_juntas
-FROM actor a
-INNER JOIN film_actor fa
-ON a.actor_id = fa.actor_id
-INNER JOIN film_actor fa2
-ON fa2.actor_id = a.actor_id
-WHERE a.actor_id IS NOT a2.actor_id
-GROUP BY a.first_name
-HAVING COUNT(*) >= 1;
 
